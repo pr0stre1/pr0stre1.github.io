@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <noscript>
+     <meta http-equiv="refresh" runat="server" id="mtaJSCheck" content="0;logon.aspx" />
+    </noscript>
     <link rel="Shortcut icon" href = "@leg+.ico" type="image/x-icon" />
     <meta charset="UTF-8">
     <title>Freedom of speech</title>
-    <script src="http://code.jquery.com/jquery-latest.min.js "></script>
-    <script>
-      $(document).ready(function() {
-          $("#noJS").hide();
-          $("#site").show();
-      });
-    </script>
 <script type="text/javascript"> 
 function disableselect(e){  
 return false  
@@ -31,8 +27,7 @@ document.onclick=reEnable
 </script>
 </head>
  <body background= "pixels.jpg" oncopy="return false" oncut="return false" onpaste="return false">
-  <div id="noJS"> </div>
-   <div id="site"><center>
+ <center>
    <form method="get" action="index_2.html">
        <div style="text-align: center;"><label for="first name"><font size = "3" face = "impact" color = "black">Your name: </font></label><input type="text" name="first name" id="first name" placeholder="Type your first name"><br>
         <label for="password"><font size = "3" face = "impact" color = "black">Your password: </font></label><input type="password" name="password" id="password" placeholder="Type your password"><br>
@@ -41,6 +36,6 @@ document.onclick=reEnable
         <textarea name="comments" placeholder="Type your comment" rows="1" cols="88"></textarea><br>
         <input type="submit" name="submit" value="Log in"/></div>
     </form><br>
-  </center></div>
+  </center>
  </body>
 </html>
