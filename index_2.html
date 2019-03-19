@@ -4,6 +4,22 @@
    <link rel="Shortcut icon" href = "@leg+.ico" type="image/x-icon" />
    <meta charset="UTF-8">
    <title>Freedom of speech</title>
+   <script type="text/javascript"> 
+function disableselect(e){  
+return false  
+}  
+function reEnable(){  
+return true  
+}  
+//if IE4+  
+document.onselectstart=new Function ("return false")  
+document.oncontextmenu=new Function ("return false")  
+//if NS6  
+if (window.sidebar){  
+document.onmousedown=disableselect  
+document.onclick=reEnable  
+}
+</script>
   </head>
   <body oncopy="return false" oncut="return false" onpaste="return false">
    <a href="http://t.me/o1eg_information_bot">
