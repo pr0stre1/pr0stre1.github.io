@@ -14,6 +14,7 @@ let mouseX;
 let mouseY;
 let sizeRadius = 1;
 let colorForPaint = "#000000";
+let erase = true;
 
 
 let offsetLeft = canvas.parentElement.parentElement.offsetLeft;
@@ -36,11 +37,11 @@ canvas.addEventListener('mousemove',function (e){
     }
 });
 
-canvas.addEventListener('mouseup',function (e){
+canvas.addEventListener('mouseup',function (){
    paint = false;
 });
 
-canvas.addEventListener('mouseleave',function (e){
+canvas.addEventListener('mouseleave',function (){
     paint = false;
 });
 
@@ -48,11 +49,15 @@ function addClick(x, y, dragging) {
     clickX.push(x);
     clickY.push(y);
     clickDrag.push(dragging);
-    clickColor.push(colorForPaint);
+    if(erase)
+        clickColor.push('#FFFFFF');
+    else
+        clickColor.push(colorForPaint);
     clickSize.push(sizeRadius);
 }
 
 color.addEventListener('input', function () {
+    erase = false;
     colorForPaint = this.value;
     redraw();
 });
@@ -69,13 +74,18 @@ for(let i = 0; i < size.length; i++) {
     });
 }
 
-document.getElementById('btn_clear').onclick = function () {
+document.getElementById('btn_clear_all').onclick = function () {
+    erase = false;
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     clickX.length = 0;
     clickY.length = 0;
     clickDrag.length = 0;
     clickColor.length = 0;
     clickSize.length = 0;
+};
+
+document.getElementById('btn_clear').onclick = function () {
+    erase = true;
 };
 
 function redraw(){
