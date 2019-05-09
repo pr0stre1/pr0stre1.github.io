@@ -1,0 +1,101 @@
+let canvas = document.getElementById('draw');
+let color = document.getElementById('color');
+let size = document.getElementById('size');
+
+context = canvas.getContext("2d");
+
+let clickX = [];
+let clickY = [];
+let clickDrag = [];
+let clickColor = [];
+let clickSize = [];
+let paint;
+let mouseX;
+let mouseY;
+let sizeRadius = 1;
+let colorForPaint = "#000000";
+
+
+let offsetLeft = canvas.parentElement.parentElement.offsetLeft;
+let offsetTop  = canvas.parentElement.parentElement.offsetTop;
+
+
+canvas.addEventListener('mousedown',function (e){
+    mouseX = e.pageX - this.offsetLeft - offsetLeft;
+    mouseY = e.pageY - this.offsetTop - offsetTop;
+    paint = true;
+    addClick(mouseX, mouseY);
+    redraw();
+});
+
+canvas.addEventListener('mousemove',function (e){
+    if(paint){
+        addClick(e.pageX - this.offsetLeft - offsetLeft,
+                 e.pageY - this.offsetTop - offsetTop, true);
+        redraw();
+    }
+});
+
+canvas.addEventListener('mouseup',function (e){
+   paint = false;
+});
+
+canvas.addEventListener('mouseleave',function (e){
+    paint = false;
+});
+
+function addClick(x, y, dragging) {
+    clickX.push(x);
+    clickY.push(y);
+    clickDrag.push(dragging);
+    clickColor.push(colorForPaint);
+    clickSize.push(sizeRadius);
+}
+
+color.addEventListener('input', function () {
+    colorForPaint = this.value;
+    redraw();
+});
+
+size.addEventListener('input', function () {
+    sizeRadius = this.value;
+    redraw();
+});
+
+for(let i = 0; i < size.length; i++) {
+    size[i].addEventListener( 'click', function () {
+        sizeRadius = this.value;
+        redraw();
+    });
+}
+
+document.getElementById('btn_clear').onclick = function () {
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    clickX.length = 0;
+    clickY.length = 0;
+    clickDrag.length = 0;
+    clickColor.length = 0;
+    clickSize.length = 0;
+};
+
+function redraw(){
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+    context.lineJoin='round';
+
+    for (let i = 0; i <clickX.length; i ++)
+    {
+        context.beginPath ();
+        if (clickDrag [i] && i) {
+            context.moveTo (clickX [i-1], clickY [i-1]);
+        } else {
+        context.moveTo (clickX [i] - 1, clickY [i]);
+        }
+        context.lineTo (clickX [i], clickY [i]);
+        context.closePath ();
+        context.strokeStyle = clickColor[i];
+        context.lineWidth = clickSize[i];
+        context.stroke ();
+    }
+}
+
+
