@@ -14,7 +14,8 @@ let mouseX;
 let mouseY;
 let sizeRadius = 1;
 let colorForPaint = "#000000";
-let erase = true;
+let erase = false;
+let btn_clear_check = 0;
 
 
 let offsetLeft = canvas.parentElement.parentElement.offsetLeft;
@@ -85,7 +86,11 @@ document.getElementById('btn_clear_all').onclick = function () {
 };
 
 document.getElementById('btn_clear').onclick = function () {
-    erase = true;
+    btn_clear_check++;
+    if (btn_clear_check%2 !== 0)
+        erase = true;
+    else
+        erase = false;
 };
 
 function redraw(){
