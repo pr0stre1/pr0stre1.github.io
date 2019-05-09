@@ -58,6 +58,7 @@ function addClick(x, y, dragging) {
 }
 
 color.addEventListener('input', function () {
+    btn_clear_check = 0;
     erase = false;
     colorForPaint = this.value;
     redraw();
@@ -68,14 +69,8 @@ size.addEventListener('input', function () {
     redraw();
 });
 
-for(let i = 0; i < size.length; i++) {
-    size[i].addEventListener( 'click', function () {
-        sizeRadius = this.value;
-        redraw();
-    });
-}
-
 document.getElementById('btn_clear_all').onclick = function () {
+    btn_clear_check = 0;
     erase = false;
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     clickX.length = 0;
