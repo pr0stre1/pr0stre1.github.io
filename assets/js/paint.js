@@ -1,6 +1,6 @@
 let temp_canvas = document.getElementById("draw");
-temp_canvas.width  = window.innerWidth - 33;
-temp_canvas.height = window.innerHeight - 33;
+temp_canvas.width  = window.innerWidth - 66;
+temp_canvas.height = window.innerHeight - 66;
 
 let canvas = document.getElementById('draw');
 let color = document.getElementById('color');
