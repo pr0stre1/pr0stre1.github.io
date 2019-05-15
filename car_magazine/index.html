@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="Shortcut icon" href = "@leg+.ico" type="image/x-icon" />
-  <title>Magazine</title>
-  <meta charset="utf-8">
+  <noscript>
+     <meta http-equiv="refresh" runat="server" id="mtaJSCheck" content="0;index_3.html" />
+    </noscript>
+    <script>
+     <meta http-equiv="refresh" runat="server" id="mtaJSCheck" content="0;index.html" />
+    </script>
+    <link rel="Shortcut icon" href = "@leg+.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <title>Freedom of speech</title>
+<script type="text/javascript"> 
+function disableselect(e){  
+return false  
+}  
 
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+function reEnable(){  
+return true  
+}  
+
+//if IE4+  
+document.onselectstart=new Function ("return false")  
+document.oncontextmenu=new Function ("return false")  
+//if NS6  
+if (window.sidebar){  
+document.onmousedown=disableselect  
+document.onclick=reEnable  
+}
+</script>
 </head>
-<body>
+<body oncopy="return false" oncut="return false" onpaste="return false">
 
 <center><div class="fotorama" data-width="100%"
      			      data-height="100%"
